@@ -1,0 +1,14 @@
+world
+paint
+hello
+java
+c++
+dvd
+access
+bye
+computer
+digital
+explains
+network
+crypto
+bitcoins
