@@ -39,21 +39,36 @@ public class hangman_code {
             System.out.println("word = "+for_guess);
             System.out.print("Your guess: ");
             char user_guess = input.next().charAt(0);
-            
-            if(word_for_guess.indexOf(user_guess) >= 0){
-                int  i = word_for_guess.indexOf(user_guess);
-                for_guess.set(i,Character.toString(user_guess));
-                System.out.println("correct guess");
+
+            if(!for_guess.contains(Character.toString('_'))){
+                System.out.println("YOU WIN");
+                break;
             }
+            if(word_for_guess.indexOf(user_guess) >= 0){
+                //int  f = word_for_guess.indexOf(user_guess);
+                for(char i = 0; i < for_guess.size(); i++){
+                    if(word_for_guess.charAt(i) == user_guess){
+                        for_guess.set(i,Character.toString(user_guess));
+                    }
+                }
+                if(!for_guess.contains(Character.toString('_'))){
+                    System.out.println("YOU WIN");
+                    System.out.println("The word is:= "+word_for_guess);
+                    System.out.println("your result is ="+for_guess);
+                    break;
+                }
+            }
+
             else{
                 System.out.println("Wrong guess = " +wrong_guesses+"/6");
                 System.out.println(result(wrong_guesses));
+                if(wrong_guesses == 6){
+                    System.out.println("You lost the game");
+                }
                 wrong_guesses++;
             }           
         }
         input.close();
-        System.out.println("YOU HAVE LOST THE GAME");
-       
     }   
     static String result(int worng_attempt){
         return switch(worng_attempt){
